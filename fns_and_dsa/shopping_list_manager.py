@@ -6,7 +6,7 @@ Objective: Utilize Python lists to create a simple shopping list manager that al
 
 def display_menu():
     """Prints the menu options for the shopping list manager."""
-    print("\nShopping List Manager")
+    print("Shopping List Manager")
     print("1. Add Item")
     print("2. Remove Item")
     print("3. View List")
@@ -18,6 +18,8 @@ def main():
     
     # Use an infinite loop to keep the program running until the user chooses to exit
     while True:
+        # Display a newline before the menu for better readability in the terminal
+        print()       
         display_menu()
         choice = input("Enter your choice: ")
 
@@ -36,6 +38,7 @@ def main():
             
             # Use a try-except block to handle cases where the item is not found
             try:
+                # Remove the item from the list       
                 shopping_list.remove(item_to_remove)
                 print(f"'{item_to_remove}' removed from the list.")
             except ValueError:
@@ -63,4 +66,5 @@ def main():
             print("Invalid choice. Please try again.")
 
 if __name__ == "__main__":
+
     main()
