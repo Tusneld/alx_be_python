@@ -80,4 +80,5 @@ else:
 
 # Provide a Customized Reminder using the required print format
 # Ensure the output string starts with "Reminder: "
-print(f"\nReminder: {final_reminder_text}")
+print(f"Reminder: {final_reminder}")
+
