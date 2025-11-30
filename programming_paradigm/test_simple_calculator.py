@@ -43,10 +43,12 @@ class TestSimpleCalculator(unittest.TestCase):
         self.assertEqual(self.calc.multiply(-5, 2), -10)
 
     # --- Test Cases for divide() ---
-    # REQUIRED: test_divide(self)
-    def test_divide(self):
+    # REQUIRED: test_division(self) (This is the final fix)
+    def test_division(self):
         """Test the division method, including the division by zero edge case."""
+        # Normal division
         self.assertEqual(self.calc.divide(10, 2), 5.0)
+        # Division resulting in a float
         self.assertAlmostEqual(self.calc.divide(10, 3), 3.3333333333333335)
         # Division by zero (must return None as per SimpleCalculator spec)
         self.assertIsNone(self.calc.divide(10, 0), 
