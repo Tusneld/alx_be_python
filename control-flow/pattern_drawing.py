@@ -18,20 +18,24 @@ Inside the while loop, use a for loop to print asterisks (*) side by side withou
 After completing each row, print a newline character to move to the next row.
 Continue until the pattern forms a square of the inputted size.
 """
-# Prompt user for pattern size
+
+# Prompt User for Pattern Size
+
 try:
-    size_input = input("Enter the size of the pattern: ")
-    size = int(size_input)
+    size = int(input("Enter the size of the pattern:"))
     if size <= 0:
-        raise ValueError("Size must be a positive integer.")
-except ValueError as e:
-    print(f"Invalid input: {e}")
-    # Exit if input is invalid
+        # Handle non-positive input gracefully
+        print("Size must be a positive integer.")
+        exit()
+except ValueError:
+    # Handle non-integer input gracefully
+    print("Invalid input. Please enter a positive integer.")
     exit()
 
 # Initialize row counter for the while loop
 row = 0
 
+# Draw the Pattern
 # Use a while loop to iterate through each row
 while row < size:
     # Use a for loop to print asterisks for the current row (columns)
