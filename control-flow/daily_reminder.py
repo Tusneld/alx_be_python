@@ -44,34 +44,40 @@ priority = input("Priority (high/medium/low): ").lower()
 time_bound = input("Is it time-bound? (yes/no): ").lower()
 
 # Initialize the base reminder message
-base_message = f"'{task}' is a **{priority} priority** task"
+final_reminder_text = ""
 
-# Use Match Case to determine the core recommendation based on priority
+# Process the Task Based on Priority and Time Sensitivity using Match Case
 match priority:
     case 'high':
-        recommendation = base_message + "."
+        base_message = f"'{task}' is a high priority task"
     case 'medium':
-        recommendation = base_message + ". Aim to start it soon."
+        base_message = f"Note: '{task}' is a medium priority task"
     case 'low':
-        recommendation = base_message + ". Consider completing it when you have free time."
+        base_message = f"Note: '{task}' is a low priority task"
     case _:
-        # Default case for invalid priority input
-        recommendation = f"'{task}' has an unrecognized priority level (**{priority}**)."
+        # Default case for unrecognized priority
+        base_message = f"'{task}' has an unrecognized priority ({priority})"
 
-# Use an if statement to modify the reminder if the task is time-bound
-if time_bound == 'yes':
-    # This message is added to the base recommendation for high priority tasks
-    # or overwrites it for others to emphasize urgency.
-    if priority == 'high':
-        final_reminder = recommendation.replace(".", " that requires **immediate attention today!**")
-    elif priority in ['medium', 'low']:
-        final_reminder = f"**URGENT**: {base_message} and it's time-bound! Try to complete it today."
-    else:
-        # Fallback for time-bound task with invalid priority
-        final_reminder = f"Reminder: '{task}' is time-bound. Action required!"
+# Use an if statement to modify the reminder if the task is time-bound.
+if time_bound == 'yes' and priority == 'high':
+    # Example 1 match: high priority and time-bound
+    # If a high priority task is time-bound, add the immediate action clause
+    immediate_action_clause = " that requires immediate attention today!"
+    final_reminder_text = base_message + immediate_action_clause
+
+elif time_bound == 'yes' and priority in ['medium', 'low']:
+    # Treat medium/low time-bound tasks with urgency
+    final_reminder_text = f"**Time-bound:** {base_message}. Try to complete it today!"
+
+elif priority == 'low':
+    # Example 2 match: low priority and not time-bound
+    final_reminder_text = base_message + ". Consider completing it when you have free time."
+
 else:
-    # Use the recommendation as is if it's not time-bound
-    final_reminder = recommendation
+    # Handles 'high' or 'medium' priority that is not time-bound, or any other case.
+    final_reminder_text = base_message + "."
 
-# Print the final customized reminder
-print("\nReminder:", final_reminder)
+
+# Provide a Customized Reminder using the required print format
+# Ensure the output string starts with "Reminder: "
+print(f"\nReminder: {final_reminder_text}")
