@@ -4,7 +4,7 @@ Objective: Define a function that performs basic arithmetic operations to be imp
            and used in a separate main.py script.
 """
 
-def perform_operation(num1: float, num2: float, operation: str):
+def perform_operation(num1, num2, operation):
     """
     Performs one of four basic arithmetic operations: add, subtract, multiply, or divide.
 
@@ -27,7 +27,7 @@ def perform_operation(num1: float, num2: float, operation: str):
         # Perform multiplication
         return num1 * num2
     elif operation == 'divide':
-        # Handle the division by zero case
+      # Handle the division by zero case as required
         if num2 == 0:
             return "Division by zero is not possible."
         # Perform division
@@ -35,5 +35,6 @@ def perform_operation(num1: float, num2: float, operation: str):
     else:
         # Handle invalid operation input
         return f"Error: Invalid operation '{operation}' specified."
+
 
 # Note: The provided main.py will import and test this function.
