@@ -1,0 +1,16 @@
+from polymorphism_demo import Shape, Rectangle, Circle
+import math
+
+def main():
+    shapes = [
+        Rectangle(10, 5),
+        Circle(7)
+    ]
+
+    for shape in shapes:
+        # Polymorphism in action: The same call (shape.area()) executes
+        # different code depending on the object's actual type.
+        print(f"The area of the {shape.__class__.__name__} is: {shape.area()}")
+
+if __name__ == "__main__":
+    main()
